@@ -35,6 +35,8 @@ GEM
     rack (2.2.7)
     rack-contrib (2.3.0)
       rack (~> 2.0)
+    rack-cors (2.0.1)
+      rack (>= 2.0.0)
     rack-protection (3.0.6)
       rack
     rake (13.0.6)
@@ -42,7 +44,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     require_all (3.0.0)
-    require_relative (1.0.3)
     rerun (0.14.0)
       listen (~> 3.0)
     ruby2_keywords (0.0.5)
@@ -55,9 +56,10 @@ GEM
       activerecord (>= 4.1)
       sinatra (>= 1.0)
     sqlite3 (1.6.3-x64-mingw-ucrt)
-    tilt (2.1.0)
+    tilt (2.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    wdm (0.1.1)
 
 PLATFORMS
   x64-mingw-ucrt
@@ -69,13 +71,14 @@ DEPENDENCIES
   pry
   puma
   rack-contrib
+  rack-cors
   rake
   require_all
-  require_relative
   rerun
   sinatra
   sinatra-activerecord
   sqlite3
+  wdm
 
 BUNDLED WITH
    2.4.13
