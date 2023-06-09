@@ -3,31 +3,8 @@ class Number < ActiveRecord::Base
 
     def self.lead
         leads = Number.order(score: :desc, timestamp: :asc).limit(10)
-        leads.map { |user| {name:User.find(user.user_id).name, score:user.score, time:user.timestamp} }
+        leads.map { |user| {name:User.find(user.user_id).name, score:user.score, moves:user.moves} }
     end
-
-    # def self.rank(id)
-    #     user =  User.find(id)
-    #     board = Number.order(score: :desc)
-    #     rank = board.find_index{ |user| user.id == id } 
-    #     score = board[rank].score
-    #     time = board[rank].timestamp
-    #     return {user: user[:name], rank: rank, score: score, time: time}
-    # end
-
-    # def self.rank(id)
-    #     user = User.find(id)
-    #     return {} unless user
-
-    #     board = Number.order(score: :desc)
-    #     ids = board.map{ |user| user.id}
-    #     # scores = board.map{ |user| {user.timestamp, user.score}}
-    #     rank = ids.index{ |user| user == id }.to_i
-    #     score = board.find_by(user_id:id).score
-    #     time = board.find_by(user_id:id).timestamp
-
-    #     return [{user: user[:name], rank: (rank+1), score: score, time: time}]
-    # end
 
     def self.rank(id)
         user = User.find(id)
@@ -38,10 +15,10 @@ class Number < ActiveRecord::Base
         # scores = board.map{ |user| {user.timestamp, user.score}}
         rank = ids.index{ |user| user == id }.to_i
         score = board.find_by(user_id:id).score
-        time = board.find_by(user_id:id).timestamp
+        moves = board.find_by(user_id:id).moves
 
         #{user[:name]} #{rank+1} #{score} #{time}
-        return "#{user[:name]} #{rank+1} #{score} #{time}"
+        return "#{user[:name]} #{rank+1} #{score} #{moves}"
     end
 
 

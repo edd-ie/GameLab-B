@@ -9,6 +9,11 @@ class ApplicationController < Sinatra::Base
         Logic.all.to_json
     end
 
+    post '/rename_user' do
+        User.find_by(email: params[:email]).update(name: params[:name])
+        User.find_by(email: params[:email]).to_json
+    end
+
     get '/user/:id' do
         User.find(params[:id]).to_json
     end
@@ -29,7 +34,7 @@ class ApplicationController < Sinatra::Base
 
     get '/rank_num/:id' do
         text=Number.rank(params[:id]).split(" ")
-        data = {name: text[0], rank: text[1], score: text[2], time: text[3]}
+        data = {name: text[0], rank: text[1], score: text[2], moves: text[3]}
         data.to_json
     end
 
@@ -44,7 +49,7 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/num_board/:id' do
-        x = Number.create(score: params[:score], user_id: params[:id], timestamp: params[:timestamp])
+        x = Number.create(score: params[:score], user_id: params[:id], moves: params[:moves])
         x.to_json
     end
     post '/flappy_board/:id' do

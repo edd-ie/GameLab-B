@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_07_105702) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_212611) do
   create_table "jumps", force: :cascade do |t|
     t.integer "score"
     t.integer "user_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_07_105702) do
 
   create_table "numbers", force: :cascade do |t|
     t.integer "score"
-    t.integer "timestamp"
+    t.integer "moves"
     t.integer "user_id"
   end
 
