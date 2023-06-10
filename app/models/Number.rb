@@ -28,4 +28,8 @@ class Number < ActiveRecord::Base
         games = Number.where(user_id: id).count
         return {name:user.name, games_played: games}
     end
+
+    def self.reset_num_score(id)
+        Number.all.where(user_id: id).destroy_all
+    end
 end

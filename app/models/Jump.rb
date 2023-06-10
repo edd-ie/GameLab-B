@@ -32,5 +32,9 @@ class Jump < ActiveRecord::Base
     def self.games(id)
         Jump.where(user_id: id).count
     end
+
+    def self.reset_flappy_score(id)
+        Jump.all.where(user_id: id).destroy_all
+    end
 end
 # 

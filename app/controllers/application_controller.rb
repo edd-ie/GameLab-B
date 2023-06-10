@@ -18,6 +18,15 @@ class ApplicationController < Sinatra::Base
         User.find(params[:id]).to_json
     end
 
+    delete '/reset_flappy/:id' do
+        Jump.reset_flappy_score(params[:id])
+    end
+
+    delete '/reset_num/:id' do
+        Number.reset_num_score(params[:id])
+    end
+
+
     get '/flappy_board' do
         Jump.lead.to_json
     end
